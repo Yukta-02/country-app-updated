@@ -50,22 +50,45 @@ const Details = (props) => {
     }
   };
   return (
-    
-      <div className="container-fluid">
-        <div className="detail">
-          <div className="row mx-0 my-0 px-0 py-0">
-            <div className="col-lg-1 col-md-1 col-sm-1 col-xs-1 mx-0 my-0 px-0 py-0"></div>
-            <div className="col-lg-10 col-md-10 col-sm-8 col-xs-10 mx-0 my-0 px-0 py-0">
-              <div className="row my-1 mx-1 mt-2">
-                <h3 className="mt-4">{countryData?.name?.common}</h3>
-                <div className="showdiv">
-                <div className="col-lg-6 col-11 my-3  country-img">
+    <div className="container.fluid">
+      <div className="detail">
+        <div className="row mx-0 my-0 px-0 py-0">
+          <div className="col-lg-1 col-md-1 col-sm-1 col-xs-1 mx-0 my-0 px-0 py-0"></div>
+          <div className="col-lg-10 col-md-10 col-sm-8 col-xs-10 mx-0 my-0 px-0 py-0">
+            <div className="row my-1 mx-1 mt-2">
+              <h3 className="mt-4">{countryData?.name?.common}</h3>
+              <div className="showdiv">
+                {/* <div className="col-lg-6 col-11 my-3  country-img">
                   {countryData &&
                     countryData.flags &&
                     countryData.flags.png && (
                       <img src={countryData.flags.png} className="detail-img  col-12 mx-0 px-0" alt="" />
                     )}
+                </div> */}
+                {/* <div className="col-lg-6 col-11 my-3 country-img">
+                  {countryData &&
+                    countryData.flags &&
+                    countryData.flags.png && (
+                      <img
+                        src={countryData.flags.png}
+                        className="detail-img col-12 mx-0 px-0 flag-image custom-flag"
+                        alt=""
+                      />
+                    )}
+                </div> */}
+                <div className="col-lg-6 col-11 my-3 country-img">
+                  {countryData &&
+                    countryData.flags &&
+                    countryData.flags.png && (
+                      <img
+                        src={countryData.flags.png}
+                        className="detail-img col-12 mx-0 px-0 flag-image"
+                        alt=""
+                        style={{ width: "100%", height: "auto" }}
+                      />
+                    )}
                 </div>
+
                 <div className="col-lg-5 col-11 mt-0 country-all">
                   {/* <p>Native Name: {countryData?.name?.native?.official}</p> */}
 
@@ -104,38 +127,36 @@ const Details = (props) => {
                       : "-"}
                   </p>
                 </div>
-                </div>
-            
               </div>
             </div>
-            <div className="col-lg-1 col-md-1 col-sm-1 col-xs-1 mx-0 my-0 px-0 py-0"></div>
           </div>
+          <div className="col-lg-1 col-md-1 col-sm-1 col-xs-1 mx-0 my-0 px-0 py-0"></div>
         </div>
+      </div>
 
-        <div className="row">
-          <div className="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
-          <div className="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-            <div>
-              <h4>Neighbour Countries</h4>
+      <div className="row">
+        <div className="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
+        <div className="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+          <div>
+            <h4>Neighbour Countries</h4>
 
-              <div className="row my-2 mx-2  border border-dark">
-                <div className=" my-2 d-flex flex-wrap justify-content-between">
-                  {neighbourCountryData?.map((elem) => {
-                    return (
-                      <img
-                        src={elem?.flags?.png}
-                        className="neighbour-country-img mt-2"
-                        alt=""
-                      />
-                    );
-                  })}
-                </div>
+            <div className="row my-2 mx-2  border border-dark">
+              <div className=" my-2 d-flex flex-wrap justify-content-between">
+                {neighbourCountryData?.map((elem) => {
+                  return (
+                    <img
+                      src={elem?.flags?.png}
+                      className="neighbour-country-img mt-2"
+                      alt=""
+                    />
+                  );
+                })}
               </div>
             </div>
           </div>
         </div>
       </div>
-    
+    </div>
   );
 };
 

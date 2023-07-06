@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import moment from "moment-timezone";
+// import CountryListItem from "./CountryListItem";
+
 
 export default function index() {
   const [countries, setCountries] = useState([]);
@@ -105,62 +108,68 @@ export default function index() {
       console.error("Error fetching data:", error);
     }
   };
+
+  
   const currentDate = new Date();
 
   // Get the day, month, year, hours, and minutes from the Date object
-  const day = currentDate.getDate();
-  const monthIndex = currentDate.getMonth();
-  const year = currentDate.getFullYear();
-  const hours = currentDate.getHours();
-  const minutes = currentDate.getMinutes();
+  const getDateTimeInTimeZone = (timeZone) => {
+    const dateTimeInTimeZone = moment().tz(timeZone).format("DD MMM YYYY, HH:mm");
+    return dateTimeInTimeZone;
+  };
+  // const day = currentDate.getDate();
+  // const monthIndex = currentDate.getMonth();
+  // const year = currentDate.getFullYear();
+  // const hours = currentDate.getHours();
+  // const minutes = currentDate.getMinutes();
 
-  // Array of month names
-  const monthNames = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
+  // // Array of month names
+  // const monthNames = [
+  //   "Jan",
+  //   "Feb",
+  //   "Mar",
+  //   "Apr",
+  //   "May",
+  //   "Jun",
+  //   "Jul",
+  //   "Aug",
+  //   "Sep",
+  //   "Oct",
+  //   "Nov",
+  //   "Dec",
+  // ];
 
-  // Format the day with appropriate suffix (e.g., "23rd")
-  const formattedDay = day + getDaySuffix(day);
+  // // Format the day with appropriate suffix (e.g., "23rd")
+  // const formattedDay = day + getDaySuffix(day);
 
-  // Get the month name
-  const month = monthNames[monthIndex];
+  // // Get the month name
+  // const month = monthNames[monthIndex];
 
-  // Format the time with leading zeros if needed
-  const formattedHours = hours.toString().padStart(2, "0");
-  const formattedMinutes = minutes.toString().padStart(2, "0");
+  // // Format the time with leading zeros if needed
+  // const formattedHours = hours.toString().padStart(2, "0");
+  // const formattedMinutes = minutes.toString().padStart(2, "0");
 
-  // Construct the final formatted date and time string
-  const formattedDateTime = `${formattedDay} ${month} ${year}, ${formattedHours}:${formattedMinutes}`;
+  // // Construct the final formatted date and time string
+  // const formattedDateTime = `${formattedDay} ${month} ${year}, ${formattedHours}:${formattedMinutes}`;
 
-  // Function to get the day suffix (e.g., "23rd")
-  function getDaySuffix(day) {
-    if (day >= 11 && day <= 13) {
-      return "th";
-    }
+  // // Function to get the day suffix (e.g., "23rd")
+  // function getDaySuffix(day) {
+  //   if (day >= 11 && day <= 13) {
+  //     return "th";
+  //   }
 
-    const lastDigit = day % 10;
-    switch (lastDigit) {
-      case 1:
-        return "st";
-      case 2:
-        return "nd";
-      case 3:
-        return "rd";
-      default:
-        return "th";
-    }
-  }
+  //   const lastDigit = day % 10;
+  //   switch (lastDigit) {
+  //     case 1:
+  //       return "st";
+  //     case 2:
+  //       return "nd";
+  //     case 3:
+  //       return "rd";
+  //     default:
+  //       return "th";
+  //   }
+  // }
 
   const searchCountry = (value) => {
     const countriesData = countriesSearch;
@@ -183,6 +192,18 @@ export default function index() {
 
     setCountries(countriesData2);
   };
+
+  // return (
+  //   <>
+  //     {/* ... */}
+  //     <div className="container">
+  //       {countries?.map((country) => (
+  //         <CountryListItem key={country.cca3} country={country} />
+  //       ))}
+  //     </div>
+  //     {/* ... */}
+  //   </>
+  // );
 
   return (
     <>
@@ -221,7 +242,10 @@ export default function index() {
                       : "-"}
                   </p>
 
-                  <p>Current date and time : {`${formattedDateTime}`}</p>
+                  {/* <p>Current date and time : {`${formattedDateTime}`}</p> */}
+                  <p>Current date and time: {getDateTimeInTimeZone(elem.timezones[0])}</p> {/* Use the first time zone in the 'timezones' array */}
+
+{/* ... */}
 
                   <button className="showmapbtn">
                     <Link

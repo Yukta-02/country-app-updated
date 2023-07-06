@@ -15,7 +15,7 @@ const CountryListItem = ({ country }) => {
       <div className="img-box">
         <img
           src={country.flags.svg}
-          className="img_fluid image_thumbnail"
+          className="img-fluid image-thumbnail"
           alt=""
         />
       </div>

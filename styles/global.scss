@@ -141,3 +141,8 @@ input[type="text"] {
 
 //   width: 160px;
 // }
+.img-fluid{
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}

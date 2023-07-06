@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import moment from "moment-timezone";
-// import CountryListItem from "./CountryListItem";
-
+import CountryListItem from "@/components/CountryListItem";
 
 export default function index() {
   const [countries, setCountries] = useState([]);
@@ -109,12 +108,13 @@ export default function index() {
     }
   };
 
-  
   const currentDate = new Date();
 
   // Get the day, month, year, hours, and minutes from the Date object
   const getDateTimeInTimeZone = (timeZone) => {
-    const dateTimeInTimeZone = moment().tz(timeZone).format("DD MMM YYYY, HH:mm");
+    const dateTimeInTimeZone = moment()
+      .tz(timeZone)
+      .format("DD MMM YYYY, HH:mm");
     return dateTimeInTimeZone;
   };
   // const day = currentDate.getDate();
@@ -193,85 +193,49 @@ export default function index() {
     setCountries(countriesData2);
   };
 
-  // return (
-  //   <>
-  //     {/* ... */}
-  //     <div className="container">
-  //       {countries?.map((country) => (
-  //         <CountryListItem key={country.cca3} country={country} />
-  //       ))}
-  //     </div>
-  //     {/* ... */}
-  //   </>
-  // );
-
   return (
     <>
       <div>
         <div className="countryheading">
           <h2>Countries</h2>
         </div>
-
-        <div>
-          <div className="search">
-            <input
-              type="text"
-              placeholder="Search countries"
-              onChange={(event) => searchCountry(event.target.value)}
-            />
-          </div>
+        <div className="search">
+          <input
+            type="text"
+            placeholder="Search countries"
+            onChange={(event) => searchCountry(event.target.value)}
+          />
         </div>
-
-        {console.log(countries, "countries Vsis")}
-
-        <div className="container">
-          {countries?.map((elem) => {
-            return (
-              <div className="box">
-                <div className="img-box">
-                  <img src={elem.flags.svg} alt="" />
-                </div>
-
-                <div className="country-info">
-                  <h6>{elem?.name?.common}</h6>
-
-                  <p>
-                    Currencies :
-                    {elem?.currencies
-                      ? Object.values(elem.currencies).join(", ")
-                      : "-"}
-                  </p>
-
-                  {/* <p>Current date and time : {`${formattedDateTime}`}</p> */}
-                  <p>Current date and time: {getDateTimeInTimeZone(elem.timezones[0])}</p> {/* Use the first time zone in the 'timezones' array */}
-
-{/* ... */}
-
-                  <button className="showmapbtn">
-                    <Link
-                      href={elem.maps.googleMaps}
-                      target="_blank"
-                      className="showfont"
-                    >
-                      Show Map
-                    </Link>
-                  </button>
-
-                  <button className="showmapbtn">
-                    <Link
-                      href={`/${elem?.name?.common}/details`}
-                      target="_blank"
-                      className="showfont"
-                    >
-                      Details
-                    </Link>
-                  </button>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+      </div>
+      {/* ... */}
+      <div className="container">
+        {countries?.map((country) => (
+          <CountryListItem key={country.cca3} country={country} />
+        ))}
       </div>
     </>
   );
+
+  // return (
+  //   <>
+  //     <div>
+  //       <div className="countryheading">
+  //         <h2>Countries</h2>
+  //       </div>
+
+  //       <div>
+  //         <div className="search">
+  //           <input
+  //             type="text"
+  //             placeholder="Search countries"
+  //             onChange={(event) => searchCountry(event.target.value)}
+  //           />
+  //         </div>
+  //       </div>
+
+  //       {console.log(countries, "countries Vsis")}
+  //       <CountryListItem country={countries} />
+  //     </div>
+  //   </>
+  // );
 }

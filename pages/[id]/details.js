@@ -76,19 +76,20 @@ const Details = (props) => {
                       />
                     )}
                 </div> */}
-                <div className="col-lg-6 col-11 my-3 country-img">
-                  {countryData &&
-                    countryData.flags &&
-                    countryData.flags.png && (
-                      <img
-                        src={countryData.flags.png}
-                        className="detail-img col-12 mx-0 px-0 flag-image"
-                        alt=""
-                        style={{ width: "100%", height: "auto" }}
-                      />
-                    )}
+                <div className="img-fluid img-thumbnail">
+                  <div className="col-lg-6 col-11 my-3 country-img">
+                    {countryData &&
+                      countryData.flags &&
+                      countryData.flags.png && (
+                        <img
+                          src={countryData.flags.png}
+                          className="detail-img col-12 mx-0 px-0 "
+                          alt=""
+                          style={{ width: "100%", height: "auto" }}
+                        />
+                      )}
+                  </div>
                 </div>
-
                 <div className="col-lg-5 col-11 mt-0 country-all">
                   {/* <p>Native Name: {countryData?.name?.native?.official}</p> */}
 
@@ -144,11 +145,13 @@ const Details = (props) => {
               <div className=" my-2 d-flex flex-wrap justify-content-between">
                 {neighbourCountryData?.map((elem) => {
                   return (
-                    <img
-                      src={elem?.flags?.png}
-                      className="neighbour-country-img mt-2"
-                      alt=""
-                    />
+                    <div className="img-fluid img-thumbnail">
+                      <img
+                        src={elem?.flags?.png}
+                        className="neighbour-country-img mt-2"
+                        alt=""
+                      />
+                    </div>
                   );
                 })}
               </div>

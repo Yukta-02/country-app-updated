@@ -207,12 +207,18 @@ export default function index() {
           />
         </div>
       </div>
-      {/* ... */}
       <div className="container">
+        {countries?.map((country, index) => (
+          <CountryListItem country={country} />
+        ))}
+      </div>
+
+      {/* ... */}
+      {/* <div className="container">
         {countries?.map((country) => (
           <CountryListItem key={country.cca3} country={country} />
         ))}
-      </div>
+      </div> */}
     </>
   );
 

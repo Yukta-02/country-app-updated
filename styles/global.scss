@@ -125,10 +125,10 @@ input[type="text"] {
 //   width: 100%;
 //   height: auto;
 // }
-// .country-img img {
-//   width: 100%;
-//   height: auto;
-// }
+.country-img img {
+  width: 100%;
+  height: auto;
+}
 
 // .custom-flag {
 //   object-fit: cover;
@@ -157,3 +157,23 @@ input[type="text"] {
   height: auto;
   object-fit: cover;
 }
+.country-all{
+  font-weight: bolder;
+  font-size: medium;
+  margin-left: 4%;
+  padding-inline: 10px;
+  
+}
+.neighbour-country-img{
+  width: 29%;
+  height: 40%;
+ // padding: 5px;
+  object-fit: relative
+;
+  margin: 5px;
+  position: relative; 
+  border: 1px solid #0a0a0a
+}
+
+
+  

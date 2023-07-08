@@ -113,10 +113,10 @@ const CountryListItem = ({ country }) => {
   };
   return (
     <div className="box">
-      <div className="img-box">
+      <div className="img-box ">
         <img
-          src={country.flags.svg}
-          className="img-fluid image-thumbnail"
+          src={country.flags.png}
+          className="img-fluid img-thumbnail"
           alt=""
         />
       </div>
